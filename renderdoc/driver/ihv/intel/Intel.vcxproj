@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+	<ProjectConfiguration Include="Development|ARM64">
+	  <Configuration>Development</Configuration>
+	  <Platform>ARM64</Platform>
+	</ProjectConfiguration>
     <ProjectConfiguration Include="Development|Win32">
       <Configuration>Development</Configuration>
       <Platform>Win32</Platform>
@@ -9,6 +13,10 @@
       <Configuration>Development</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+	<ProjectConfiguration Include="Release|ARM64">
+		<Configuration>Release</Configuration>
+		<Platform>ARM64</Platform>
+	</ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -21,6 +29,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7FCB5FC5-1DBD-4DA6-83A0-6BA4E945BDA5}</ProjectGuid>
     <RootNamespace>Intel</RootNamespace>
+	<WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\util\WindowsSDKTarget.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -28,7 +37,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolSet>v143</PlatformToolSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -49,6 +58,11 @@
     <ClCompile>
       <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='ARM64'">
+	<ClCompile>
+		<PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+	</ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
     <ClCompile>
