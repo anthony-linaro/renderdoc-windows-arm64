@@ -1,9 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Development|ARM64">
+      <Configuration>Development</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Development|Win32">
       <Configuration>Development</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="QTDebug|ARM64">
+      <Configuration>QTDebug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -31,11 +43,12 @@
     <RootNamespace>qrenderdoc</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
     <ProjectName>qrenderdoc</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\util\WindowsSDKTarget.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup>
-    <PlatformToolSet>v140</PlatformToolSet>
+    <PlatformToolSet>v143</PlatformToolSet>
     <OutputDirectory>$(SolutionDir)$(Platform)\$(Configuration)\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
@@ -66,6 +79,14 @@
     <LocalDebuggerWorkingDirectory>$(OutputDirectory)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Platform)'=='ARM64'">
     <ClCompile>
       <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -1948,6 +1969,61 @@
     </Content>
     <Content Include="$(QtBinDir)\Qt5Networkd.dll" Condition="$(Configuration)==QTDebug">
       <Link>Qt5Networkd.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\brotlicommon.dll" Condition="Exists('$(QtBinDir)\brotlicommon.dll') AND '$(Platform)'=='ARM64'">
+      <Link>brotlicommon.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\brotlidec.dll" Condition="Exists('$(QtBinDir)\brotlidec.dll') AND '$(Platform)'=='ARM64'">
+      <Link>brotlidec.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\bz2.dll" Condition="Exists('$(QtBinDir)\bz2.dll') AND '$(Platform)'=='ARM64'">
+      <Link>bz2.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\double-conversion.dll" Condition="Exists('$(QtBinDir)\double-conversion.dll') AND '$(Platform)'=='ARM64'">
+      <Link>double-conversion.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\freetype.dll" Condition="Exists('$(QtBinDir)\freetype.dll') AND '$(Platform)'=='ARM64'">
+      <Link>freetype.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\harfbuzz.dll" Condition="Exists('$(QtBinDir)\harfbuzz.dll') AND '$(Platform)'=='ARM64'">
+      <Link>harfbuzz.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\libcrypto-3-arm64.dll" Condition="Exists('$(QtBinDir)\libcrypto-3-arm64.dll') AND '$(Platform)'=='ARM64'">
+      <Link>libcrypto-3-arm64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\libpng16.dll" Condition="Exists('$(QtBinDir)\libpng16.dll') AND '$(Platform)'=='ARM64'">
+      <Link>libpng16.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\libssl-3-arm64.dll" Condition="Exists('$(QtBinDir)\libssl-3-arm64.dll') AND '$(Platform)'=='ARM64'">
+      <Link>libssl-3-arm64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\pcre2-16.dll" Condition="Exists('$(QtBinDir)\pcre2-16.dll') AND '$(Platform)'=='ARM64'">
+      <Link>pcre2-16.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </Content>
+    <Content Include="$(QtBinDir)\zlib1.dll" Condition="Exists('$(QtBinDir)\zlib1.dll') AND '$(Platform)'=='ARM64'">
+      <Link>zlib1.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>false</Visible>
     </Content>
