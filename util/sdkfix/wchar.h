@@ -26,7 +26,10 @@
 
 // workaround for bug with latest windows SDK version. wchar.h requires intrinsic that's not
 // available on VS2015 _mm_loadu_si64. We also just don't want to pull in build-time dependencies
-// on AVX if we can help it
+// on AVX if we can help it.
+
+// This is only an issue on x64, so we can skip this workaround on ARM64
+#if !defined(_M_ARM64)
 
 // include this header first (on older SDKs it might not include this but it's not a heavy header
 #include <immintrin.h>
@@ -66,3 +69,10 @@ inline const wchar_t *wmemchr_simple(const wchar_t *s, wchar_t c, size_t n)
   }
   return NULL;
 }
+#else
+
+// On ARM64 just directly include the real wchar.h
+// To avoid self-referential includes we assume it sits in a ucrt folder
+#include <../ucrt/wchar.h>
+
+#endif
