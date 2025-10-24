@@ -101,7 +101,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: [ VS2015 x86 Development, VS2015 x64 Development, VS2015 x64 Release, VS2022 x64 Development, VS2022 x64 Release ]
+        name: [ VS2015 x86 Development, VS2015 x64 Development, VS2015 x64 Release, VS2022 x64 Development, VS2022 x64 Release, VS2022 ARM64 Development ]
         include:
           - name: VS2015 x86 Development
             os: windows-2025
@@ -133,6 +133,12 @@ jobs:
             toolset: v143
             platform: x64
             configuration: Release
+          - name: VS2022 ARM64 Development
+            os: windows-11-arm
+            compiler: VS2022
+            toolset: v143
+            platform: ARM64
+            configuration: Development
     steps:
     - uses: actions/checkout@v4
       with:
