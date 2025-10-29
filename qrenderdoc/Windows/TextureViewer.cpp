@@ -984,7 +984,7 @@ void TextureViewer::UI_UpdateStatusText()
   {
     QPalette Pal(palette());
 
-    Pal.setColor(QPalette::Background, swatchColor);
+    Pal.setColor(QPalette::Window, swatchColor);
 
     ui->pickSwatch->setAutoFillBackground(true);
     ui->pickSwatch->setPalette(Pal);
@@ -2634,13 +2634,13 @@ void TextureViewer::thumb_clicked(QMouseEvent *e)
 
 void TextureViewer::render_mouseWheel(QWheelEvent *e)
 {
-  QPoint cursorPos = e->pos();
+  QPoint cursorPos = e->position().toPoint();
 
   setFitToWindow(false);
 
   // scroll in logarithmic scale
   double logScale = logf(m_TexDisplay.scale);
-  logScale += e->delta() / 2500.0;
+  logScale += e->angleDelta().y() / 2500.0;
   UI_SetScale((float)expf(logScale), cursorPos.x() * ui->render->devicePixelRatioF(),
               cursorPos.y() * ui->render->devicePixelRatioF());
 
@@ -3012,7 +3012,7 @@ void TextureViewer::Reset()
   {
     QPalette Pal(palette());
 
-    Pal.setColor(QPalette::Background, Qt::black);
+    Pal.setColor(QPalette::Window, Qt::black);
 
     ui->pickSwatch->setAutoFillBackground(true);
     ui->pickSwatch->setPalette(Pal);

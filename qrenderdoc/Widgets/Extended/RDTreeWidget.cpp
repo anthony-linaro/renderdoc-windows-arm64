@@ -153,7 +153,7 @@ public:
   Qt::ItemFlags flags(const QModelIndex &index) const override
   {
     if(!index.isValid())
-      return 0;
+      return Qt::NoItemFlags;
 
     RDTreeWidgetItem *item = itemForIndex(index);
 
@@ -895,8 +895,8 @@ void RDTreeWidget::itemDataChanged(RDTreeWidgetItem *item, int column, int role)
     if(m_lowestIndex.first == -1)
     {
       m_queuedItem = item;
-      m_lowestIndex = qMakePair<int, int>(row, 0);
-      m_highestIndex = qMakePair<int, int>(m_lowestIndex.first, m_headers.count() - 1);
+      m_lowestIndex = QPair<int, int>(row, 0);
+      m_highestIndex = QPair<int, int>(m_lowestIndex.first, m_headers.count() - 1);
     }
     else
     {

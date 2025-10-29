@@ -36,7 +36,8 @@ MEM_STATIC ZSTD_cpuid_t ZSTD_cpuid(void) {
     U32 f1d = 0;
     U32 f7b = 0;
     U32 f7c = 0;
-#ifdef _MSC_VER
+// Cherry pick 1e0bac6a9c2dcb340e7e80acce67ec67f53fd1c5 and f6daddf2dbeddc444a90a8f79f94cc55e82cbbe9
+#if defined(_MSC_VER) && (defined(_M_X64) || defined(_M_IX86))
     int reg[4];
     __cpuid((int*)reg, 0);
     {
